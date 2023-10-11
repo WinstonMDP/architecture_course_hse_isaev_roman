@@ -8,6 +8,8 @@ too_many_numbers_msg: .asciz "You can't enter this count of numbers\n"
 # arguments: a0 - begin of an array
 # return: a0 - size of the array
 input:
+addi sp sp -4
+sw ra (sp)
 mv t0 a0
 la a0 input_msg # ask to enter size of the array
 li a7 4
@@ -27,6 +29,8 @@ addi t0 t0 4
 addi t2 t2 1
 blt t2 t1 loop
 mv a0 t1
+lw ra (sp)
+addi sp sp 4
 ret
 
 too_many_numbers_exception:

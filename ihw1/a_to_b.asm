@@ -1,15 +1,16 @@
 .global a_to_b
 
 .text
-# arguments: a0 - begin of an a_array, a1 - begin of a b_array, a2 - size of the arrays
+# arguments: a0 - begin of an array_a, a1 - begin of a array_b, a2 - size of the arrays
 # return: nothing
 a_to_b:
-sw a0 (sp) # save values
+addi sp sp -4 # save values
+sw a0 (sp)
 addi sp sp -4
 sw a1 (sp)
 addi sp sp -4
 sw ra (sp)
-mv a1 a2
+mv a1 a2 # set size of the arrays to a1
 jal sums
 mv t0 a0
 mv t1 a1
@@ -18,6 +19,7 @@ addi sp sp 4
 lw a1 (sp)
 addi sp sp 4
 lw a0 (sp)
+addi sp sp 4
 li t2 0 # a loop counter
 li t3 2 # a constant for rem
 loop_2:
