@@ -17,7 +17,7 @@ la a1 array_b # set begin of the array_b to a1
 mv s0 a2
 jal a_to_b
 la a0 array_b # set begin of the array_b to a0
-mv a1 s0 # set size of arrays to a1
+mv a1 s0 # set size of the arrays to a1
 jal output
 li a7 10 # terminate
 ecall
