@@ -31,5 +31,5 @@ fadd.d ft3 ft0 ft1
 fmv.d ft1 ft0 # previous = current
 flt.d t0 ft3 ft4
 beqz t0 loop
-fmv.d fa0 ft0
+fmv.d fa0 ft0 # move result to fa0
 ret
