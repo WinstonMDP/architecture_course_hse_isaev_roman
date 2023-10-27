@@ -27,7 +27,7 @@ fmv.d ft2 ft5 # 1 / n!
 fmul.d ft2 ft2 ft8 # x^n / n!
 fadd.d ft0 ft0 ft2 # sum of sequence
 fneg.d ft1 ft1 # previous = -previous
-fadd.d ft3 ft0 ft1
+fadd.d ft3 ft0 ft1 # difference = sum of sequence - previous
 fmv.d ft1 ft0 # previous = current
 flt.d t0 ft3 ft4
 beqz t0 loop
