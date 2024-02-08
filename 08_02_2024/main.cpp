@@ -37,7 +37,9 @@ unsigned long long fib(unsigned long long x) {
 
 int main(int argc, char *argv[]) {
   pid_t chpid = fork();
-  if (chpid == 0) {
+  if (chpid == -1) {
+    printf("problem");
+  } else if (chpid == 0) {
     printf("Children: %llu\n", fact(strtol(argv[1], NULL, 10)));
   } else {
     printf("Parent: %llu\n", fib(strtol(argv[1], NULL, 10)));
