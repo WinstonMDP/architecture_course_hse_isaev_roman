@@ -9,10 +9,12 @@
 int main(int argc, char *argv[]) {
   const int buffer_size = 4096;
   char buffer[buffer_size]; // создание буфера
-  ssize_t nreaded_bytes = read(open(argv[1], O_RDONLY), buffer, buffer_size); // чтение файла
+  int fdr = open(argv[1], O_RDONLY); // создаём файловый дескриптор на чтение 
+  ssize_t nreaded_bytes = read(fdr, buffer, buffer_size); // чтение файла
+  close(fdr); // закрываем файл чтения
   buffer[nreaded_bytes] = '\0';
-  int fd = open(argv[2], O_WRONLY | O_CREAT); // создаём отдельно фаловый дескриптор, так как нам ещё его закрывать
-  write(fd, buffer, nreaded_bytes); // пишем в файл; если нет файла, создаём
-  close(fd); // закрываем файл
+  int fdw = open(argv[2], O_WRONLY | O_CREAT); // создаём фаловый дескриптор на запись
+  write(fdw, buffer, nreaded_bytes); // пишем в файл; если нет файла, создаём, так как передали нужный флаг выше
+  close(fdw); // закрываем файл записи
   return 0;
 }
