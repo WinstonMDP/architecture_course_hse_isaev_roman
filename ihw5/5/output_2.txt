@@ -1,0 +1,1 @@
+vowels: 2, consonats: 2
